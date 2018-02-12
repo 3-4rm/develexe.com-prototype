@@ -6,3 +6,8 @@
   border-top:  1px solid #CC0000;
   box-sizing: border-box;
 }
+@media (max-width: 576px) {
+  #site-footer {
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,12 @@
+#site-head {
+  background-color: black;
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}

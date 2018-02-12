@@ -27,7 +27,11 @@
   text-decoration: none;
   cursor: pointer;
 }
-
+.text-normal a:hover {
+  color: #CC0000;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 /*------------------------------*/
 .text-loud {
