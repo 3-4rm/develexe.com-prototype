@@ -1,0 +1,29 @@
+.button-primary {
+  background-color: #3b67bc;
+  border-radius: 5px;
+  border: 3px solid #3b67bc;
+  color: white;
+  height: 50px;
+  width: 100%;
+  font-size: inherit;
+}
+
+.button-secondary {
+  background-color: transparent;
+  border-radius: 5px;
+  color: white;
+  height: 50px;
+  width: 100%;
+  border: 3px solid #3b67bc;
+  font-size: inherit
+}
+
+.button-bio {
+  background-color: transparent;
+  border-radius: 5px;
+  color: white;
+  height: 30px;
+  width: 100%;
+  border: 2px solid #00CCCC;
+  font-size: inherit
+}
