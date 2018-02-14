@@ -1,0 +1,32 @@
+.member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.member-card  .pic-frame{
+  margin-bottom: 20px;
+  height: 150px;
+  width: 150px;
+  border: 6px solid #00CC00;
+  border-radius: 50%;
+  color: #0000CC;
+  text-align: center;
+  line-height: 142px;
+  box-sizing: border-box;
+  font-size: 120px;
+  user-select: none;
+  -moz-user-select: none;
+}
+
+#all-members {
+  height: 250px;
+  border: 10px solid darkgray;
+  display: flex;
+  justify-content: space-around;
+  color: darkgray;
+  font-size: 80px;
+  line-height: 250px;
+  box-sizing: border-box;
+}
