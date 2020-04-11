@@ -22,6 +22,7 @@
       <div id='header-logo-x'>X</div>
       <div>ɘ</div>
     </div>
+    <div id='mobile-main-menu-toggle'>Menu</div>
     <div id='main-menu-desktop'>
       <a data-view='0' class='menu-item'>Hello!</a>
       <a data-view='1' class='menu-item'>About Us</a>
@@ -29,12 +30,23 @@
       <a data-view='3' class='menu-item'>Meet Team</a>
       <a data-view='4' class='menu-item'>Contacts</a>
     </div>
+  </div>
+  <div id='main-menu-mobile-container'>
+    <div id='main-menu-mobile-close'>
+      <div id='main-menu-mobile-close-button'>x</div>
+    </div>
     <div id='main-menu-mobile'>
-      <a data-view='0' class='menu-item'>i</a>
-      <a data-view='1' class='menu-item'>c</a>
-      <a data-view='2' class='menu-item'>o</a>
-      <a data-view='3' class='menu-item'>n</a>
-      <a data-view='4' class='menu-item'>s</a>
+      <div style="display: flex">
+        <a data-view='0' style='height: 100px; width: 280px' class='menu-item'>Hello!</a>
+      </div>
+      <div style="display: flex">
+        <a data-view='1' class='menu-item'>About Us</a>
+        <a data-view='2' class='menu-item'>Services</a>
+      </div>
+      <div style="display: flex">
+        <a data-view='3' class='menu-item'>Meet Team</a>
+        <a data-view='4' class='menu-item'>Contacts</a>
+      </div>
     </div>
   </div>
   <div class='container'>
@@ -338,20 +350,70 @@
     </div>
   </div>
   <script type='text/javascript'>
+    var getStyleNumericValue = function(elem, prop){
+      var value = parseFloat(window.getComputedStyle(elem)[prop].replace('px', ''));
+      return value;
+    }
 
-    var headerHeight = 100
+    var getStyleStringValue = function(elem, prop){
+      var value = window.getComputedStyle(elem)[prop];
+      return value;
+    };
+
+    var getElementOuterHeight = function(el) {
+      var height = getStyleNumericValue(el, "height") +
+        getStyleNumericValue(el, "margin-top") +
+        getStyleNumericValue(el, "margin-bottom");
+
+      if (getStyleStringValue(el, "box-sizing") !== "border-box") {
+        height += getStyleNumericValue(el, "border-top-width") +
+        getStyleNumericValue(el, "border-bottom-width") +
+        getStyleNumericValue(el, "padding-top") +
+        getStyleNumericValue(el, "padding-bottom");
+      }
+      return height;
+    }
+
+    var getDocumentHeight = function(){
+      var documentHeight =
+        Math.max( document.body.scrollHeight,
+                  document.body.offsetHeight,
+                  document.documentElement.clientHeight,
+                  document.documentElement.scrollHeight,
+                  document.documentElement.offsetHeight );
+      return documentHeight;
+    }
+  </script>
+
+  <script type='text/javascript'>
+
+    var siteHeader = document.querySelector('#site-head')
+    var headerHeight = getElementOuterHeight(siteHeader)
     var headLogoElement = document.getElementById('header-logo')
     var viewsHeight = window.innerHeight - headerHeight
     var views = document.querySelectorAll('.view')
     views[0].style.marginTop = headerHeight + 'px'
     var mainMenuItemsDesktop = document.querySelectorAll('#main-menu-desktop .menu-item')
     var mainMenuItemsMobile = document.querySelectorAll('#main-menu-mobile .menu-item')
+    var mainMenuMobileClose = document.querySelector('#main-menu-mobile-close')
+    var mainMenuMobileContainer = document.querySelector('#main-menu-mobile-container')
+    var mainMenuMobileToggle = document.querySelector('#mobile-main-menu-toggle')
 
     var setMainMenuHandlers = function () {
       for(var i = 0; i < mainMenuItemsDesktop.length; i++){
         mainMenuItemsDesktop[i].onclick = onMainMenuItemClick
         mainMenuItemsMobile[i].onclick = onMainMenuItemClick
       }
+      mainMenuMobileClose.onclick = onMainMenuMobileCloseClick
+      mainMenuMobileToggle.onclick = onMainMenuMobileToggleClick
+    }
+
+    var onMainMenuMobileCloseClick = function() {
+      mainMenuMobileContainer.style.width = '0px'
+    }
+
+    var onMainMenuMobileToggleClick = function() {
+      mainMenuMobileContainer.style.width = '100%'
     }
 
     var onMainMenuItemClick = function () {
@@ -363,6 +425,7 @@
         scrollTo += getElementOuterHeight(views[i])
       }
       window.scrollTo(0, scrollTo)
+      mainMenuMobileContainer.style.width = '0px'
     }
 
     var setVeiwsMinHeight = function() {
@@ -388,40 +451,6 @@
         headLogoElement.classList.remove('fade')
         return
       }
-    }
-
-    var getDocumentHeight = function(){
-      var documentHeight =
-        Math.max( document.body.scrollHeight,
-                  document.body.offsetHeight,
-                  document.documentElement.clientHeight,
-                  document.documentElement.scrollHeight,
-                  document.documentElement.offsetHeight );
-      return documentHeight;
-    };
-
-    var getStyleNumericValue = function(elem, prop){
-      var value = parseFloat(window.getComputedStyle(elem)[prop].replace('px', ''));
-      return value;
-    }
-
-    var getStyleStringValue = function(elem, prop){
-      var value = window.getComputedStyle(elem)[prop];
-      return value;
-    };
-
-    var getElementOuterHeight = function(el) {
-      var height = getStyleNumericValue(el, "height") +
-        getStyleNumericValue(el, "margin-top") +
-        getStyleNumericValue(el, "margin-bottom");
-
-      if (getStyleStringValue(el, "box-sizing") !== "border-box") {
-        width += getStyleNumericValue(el, "border-top-width") +
-        getStyleNumericValue(el, "border-bottom-width") +
-        getStyleNumericValue(el, "padding-top") +
-        getStyleNumericValue(el, "padding-bottom");
-      }
-      return height;
     }
 
     var getCurrentViewIndex = function () {
@@ -475,6 +504,7 @@
     })
 
     window.addEventListener('resize', function() {
+      headerHeight = getElementOuterHeight(siteHeader)
       // setVeiwsMinHeight()
       // setMainMenuState()
     })

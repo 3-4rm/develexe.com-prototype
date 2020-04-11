@@ -1,0 +1,140 @@
+.text-normal {
+  color: gray;
+}
+.text-normal h2 {
+
+}
+
+.text-normal h4 {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  font-size: 18px;
+}
+
+.text-normal p {
+  margin-top: 0px;
+  margin-bottom: 0.25em;
+  font-size: 16px;
+}
+
+.text-normal ul {
+  margin-top: 0px;
+  margin-bottom: 0.25em;
+}
+
+.text-normal a {
+  color: powderblue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*------------------------------*/
+.text-loud {
+  color: white;
+  line-height: normal;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.text-loud h2 {
+
+}
+
+.text-loud h4 {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.text-loud p {
+  margin-top: 0px;
+  margin-bottom: 0.25em;
+}
+
+.text-loud ul {
+  margin-top: 0px;
+  margin-bottom: 0.25em;
+}
+
+.text-loud a {
+  color: powderblue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* --------------------------------------------- */
+
+.text-dispersed {
+  color: gray;
+}
+.text-dispersed h2 {
+
+}
+
+.text-dispersed h4 {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  font-size: 18px;
+  margin-bottom: 1em;
+}
+
+.text-dispersed p {
+  margin-top: 0px;
+  margin-bottom: 1em;
+  font-size: 16px;
+}
+
+.text-dispersed ul {
+  margin-top: 0px;
+  margin-bottom: 0.5em;
+}
+
+.text-dispersed li {
+  margin-bottom: 0.5em;
+}
+
+.text-dispersed a {
+  color: powderblue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* --------------------------------------------- */
+
+.text-large {
+  color: gray;
+}
+
+.text-large h2 {
+
+}
+
+.text-large h4 {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  font-size: 20px;
+  margin-bottom: 1em;
+}
+
+.text-large p {
+  margin-top: 0px;
+  margin-bottom: 1em;
+  font-size: 18px;
+}
+
+.text-large ul {
+  margin-top: 0px;
+  margin-bottom: 0.5em;
+}
+
+.text-large li {
+  margin-bottom: 0.5em;
+}
+
+.text-large a {
+  color: powderblue;
+  text-decoration: none;
+  cursor: pointer;
+}
